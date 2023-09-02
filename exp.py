@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 # Import datasets, classifiers and performance metrics
 from sklearn import datasets, metrics, svm
 from sklearn.model_selection import train_test_split
-from utils import data_preprocess, train_model, read_digits, split_train_dev_test, p_and_eval
+from utils import data_preprocess, train_model, read_digits, split_train_dev_test, predict_and_eval
 import pdb
 
 ###############################################################################
@@ -70,7 +70,7 @@ model = train_model(X_train, y_train, {'gamma': 0.001}, model_type='svm')
 # Predict the value of the digit on the test subset
 # predicted = model.predict(X_test)
 # Predict the value of the digit on the test subset
-predicted = p_and_eval(model, X_test, y_test)
+predicted = predict_and_eval(model, X_test, y_test)
 ###############################################################################
 # Below we visualize the first 4 test samples and show their predicted
 # digit value in the title.
