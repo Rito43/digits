@@ -49,7 +49,7 @@ def split_train_dev_test(X, y, test_size, dev_size):
     
     return X_train, X_test, X_dev, y_train, y_test, y_dev
 
-def p_and_eval(model, X_test, y_test):
+def predict_and_eval(model, X_test, y_test):
     # Predict the values using the model
     predicted = model.predict(X_test)
 
