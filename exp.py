@@ -148,3 +148,6 @@ for test_s in test_sizes:
         
         print(f"test_size={test_s} dev_size={dev_s} train_size={train_size} train_acc={best_accuracy:.2f} dev_acc={best_accuracy:.2f} test_acc={best_accuracy:.2f}")
         print(f"Best Hyperparameters: ( gamma : {best_hparams[0]} , C : {best_hparams[1]} )")
+        print("Total no of samples:{len(X)}")
+        print("Image size:{X[0].shape}")
+        
