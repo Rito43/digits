@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Comparison</title>
+</head>
+<body>
+    <h1>Image Comparison</h1>
+    <form id="imageForm" action="/compare_images" method="POST" enctype="multipart/form-data">
+        <label for="image1">Image 1:</label>
+        <input type="file" name="image1" accept="image/*" required><br><br>
+        
+        <label for="image2">Image 2:</label>
+        <input type="file" name="image2" accept="image/*" required><br><br>
+        
+        <input type="submit" value="Compare Images">
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+       
+    document.getElementById('imageForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+
+        fetch('/compare_images', {
+            method: 'POST',
+            body: formData,
+            // Set the content type to multipart form data
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.result) {
+                document.getElementById('result').textContent = "Images are similar.";
+            } else {
+                document.getElementById('result').textContent = "Images are different.";
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+</body>
+</html>
