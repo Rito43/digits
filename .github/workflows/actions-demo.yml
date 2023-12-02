@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-on: [push]
+on: [push,workflow_dispatch]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -20,5 +20,6 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Install dep
         run:  pip3 install --no-cache-dir -r requirements.txt
-      - name: Run Pytest
-        run: python -m pytest
+      - name: Run test cases
+        run: python3 digits.py --runs 1 --test_sizes 0.3 --dev_sizes 0.2 --models lr
+          
